@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#f8f7f3] min-h-screen flex">
+  <!-- Sidebar -->
+  <aside class="w-64 bg-[#2c5530] text-white flex flex-col min-h-screen">
+    <!-- User Profile -->
+    <div class="flex flex-col items-center py-8 border-b border-[#436946]/30">
+      <img src="https://ui-avatars.com/api/?name=Admin&background=436946&color=fff" alt="User" class="w-16 h-16 rounded-full mb-2 shadow-lg">
+      <div class="font-bold text-lg">Admin User</div>
+      <div class="text-[#b8c5a6] text-sm">Administrator</div>
+    </div>
+    <!-- Navigation -->
+    <nav class="flex-1 mt-8">
+      <ul class="space-y-2">
+        <li>
+          <a href="#" class="sidebar-link flex items-center px-6 py-3 hover:bg-[#436946] rounded-l-full font-semibold transition" data-section="profile">
+            <span class="material-icons mr-3">person</span>
+            Profile
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-link flex items-center px-6 py-3 hover:bg-[#436946] rounded-l-full font-semibold transition" data-section="product">
+            <span class="material-icons mr-3">inventory_2</span>
+            Product management
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-link flex items-center px-6 py-3 hover:bg-[#436946] rounded-l-full font-semibold transition" data-section="orders">
+            <span class="material-icons mr-3">receipt_long</span>
+            View/edit orders
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-link flex items-center px-6 py-3 hover:bg-[#436946] rounded-l-full font-semibold transition" data-section="quotes">
+            <span class="material-icons mr-3">request_quote</span>
+            Handle quote requests
+          </a>
+        </li>
+        <li>
+          <a href="#" class="sidebar-link flex items-center px-6 py-3 hover:bg-[#436946] rounded-l-full font-semibold transition" data-section="analytics">
+            <span class="material-icons mr-3">analytics</span>
+            Analytics dashboard
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </aside>
+  <!-- Main Content -->
+  <main class="flex-1 p-10">
+    <h1 class="text-3xl font-heritage font-bold text-[#2c5530] mb-8">Admin Dashboard</h1>
+    <!-- Dynamic Content Area -->
+    <div id="dashboard-content">
+      <div class="bg-white rounded-xl shadow p-8 text-[#2c5530]">
+        <p>Welcome to your admin dashboard. Select a service from the sidebar to get started.</p>
+      </div>
+    </div>
+  </main>
+  <!-- Material Icons CDN -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    .font-heritage { font-family: 'Merriweather', serif; }
+    .sidebar-link.active, .sidebar-link:focus { background: #436946; }
+  </style>
+  <script>
+    // Content for each section
+    const sections = {
+      profile: `
+        <div class='bg-white rounded-xl shadow p-8 text-[#2c5530] max-w-xl'>
+          <h2 class='text-2xl font-bold mb-4 font-heritage'>Admin Profile</h2>
+          <form class='space-y-4'>
+            <div>
+              <label class='block mb-1 font-semibold'>Name</label>
+              <input type='text' class='w-full border rounded px-3 py-2' placeholder='Admin User' />
+            </div>
+            <div>
+              <label class='block mb-1 font-semibold'>Email</label>
+              <input type='email' class='w-full border rounded px-3 py-2' placeholder='admin@email.com' />
+            </div>
+            <div>
+              <label class='block mb-1 font-semibold'>Password</label>
+              <input type='password' class='w-full border rounded px-3 py-2' placeholder='New password' />
+            </div>
+            <div>
+              <label class='block mb-1 font-semibold'>Avatar</label>
+              <input type='file' class='w-full' />
+            </div>
+            <button type='submit' class='mt-4 px-6 py-2 bg-[#2c5530] text-white rounded hover:bg-[#436946] transition'>Update Profile</button>
+          </form>
+        </div>
+      `,
+      product: `
+        <div class='bg-white rounded-2xl shadow-xl p-8 text-[#2c5530]'>
+          <div class="flex justify-between items-center mb-10">
+            <h2 class='text-3xl font-bold font-heritage'>Product Management</h2>
+            <button onclick="showAddProduct()" class='px-6 py-3 bg-gradient-to-r from-[#2c5530] to-[#436946] text-white rounded-full hover:from-[#436946] hover:to-[#2c5530] transition-all duration-300 flex items-center shadow-lg hover:shadow-xl transform hover:scale-105'>
+              <span class="material-icons mr-2">add</span> Add Product
+            </button>
+          </div>
+          
+          <!-- Products List -->
+          <div class="overflow-x-auto bg-gradient-to-br from-[#f8f7f3] to-white rounded-xl p-8 shadow-inner">
+            <table class='w-full text-left'>
+              <thead>
+                <tr class='border-b-2 border-[#2c5530]/20'>
+                  <th class='py-4 px-6 font-heritage text-lg'>Image</th>
+                  <th class='py-4 px-6 font-heritage text-lg'>Name</th>
+                  <th class='py-4 px-6 font-heritage text-lg'>Category</th>
+                  <th class='py-4 px-6 font-heritage text-lg'>Price</th>
+                  <th class='py-4 px-6 font-heritage text-lg'>Stock</th>
+                  <th class='py-4 px-6 font-heritage text-lg'>Actions</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#2c5530]/10">
+                <tr class="hover:bg-[#f8f7f3] transition-colors duration-200">
+                  <td class='py-5 px-6'><img src="bt.jpg" alt="Black Tea" class="w-20 h-20 object-cover rounded-xl shadow-md"></td>
+                  <td class='py-5 px-6 font-medium text-lg'>Premium Assam Black Tea</td>
+                  <td class='py-5 px-6'>Black Tea</td>
+                  <td class='py-5 px-6 font-medium'>₹450</td>
+                  <td class='py-5 px-6'>50</td>
+                  <td class='py-5 px-6 space-x-3'>
+                    <button class='px-5 py-2.5 bg-gradient-to-r from-[#9CAF88] to-[#B8C5A6] text-[#2c5530] rounded-full hover:from-[#B8C5A6] hover:to-[#9CAF88] transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105'>Edit</button>
+                    <button class='px-5 py-2.5 bg-gradient-to-r from-red-100 to-red-200 text-red-800 rounded-full hover:from-red-200 hover:to-red-100 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105'>Delete</button>
+                  </td>
+                </tr>
+                <tr class="hover:bg-[#f8f7f3] transition-colors duration-200">
+                  <td class='py-5 px-6'><img src="gt.jpg" alt="Green Tea" class="w-20 h-20 object-cover rounded-xl shadow-md"></td>
+                  <td class='py-5 px-6 font-medium text-lg'>Assam Green Tea</td>
+                  <td class='py-5 px-6'>Green Tea</td>
+                  <td class='py-5 px-6 font-medium'>₹500</td>
+                  <td class='py-5 px-6'>45</td>
+                  <td class='py-5 px-6 space-x-3'>
+                    <button class='px-5 py-2.5 bg-gradient-to-r from-[#9CAF88] to-[#B8C5A6] text-[#2c5530] rounded-full hover:from-[#B8C5A6] hover:to-[#9CAF88] transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105'>Edit</button>
+                    <button class='px-5 py-2.5 bg-gradient-to-r from-red-100 to-red-200 text-red-800 rounded-full hover:from-red-200 hover:to-red-100 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105'>Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Add Product Form (Hidden by default) -->
+          <div id="addProductForm" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center">
+            <div class="bg-white p-10 rounded-2xl max-w-xl w-full mx-4 shadow-2xl">
+              <div class="flex justify-between items-center mb-8">
+                <h3 class="text-2xl font-bold font-heritage text-[#2c5530]">Add New Product</h3>
+                <button onclick="hideAddProduct()" class="text-[#2c5530] hover:text-[#436946] transition-colors">
+                  <span class="material-icons text-2xl">close</span>
+                </button>
+              </div>
+              <form class="space-y-6">
+                <div class="grid grid-cols-2 gap-6">
+                  <div>
+                    <label class="block mb-2 font-semibold text-[#2c5530]">Product Name</label>
+                    <input type="text" class="w-full border-2 border-[#2c5530]/20 rounded-xl px-4 py-3 focus:outline-none focus:border-[#2c5530] transition-colors" placeholder="Enter product name">
+                  </div>
+                  <div>
+                    <label class="block mb-2 font-semibold text-[#2c5530]">Category</label>
+                    <select class="w-full border-2 border-[#2c5530]/20 rounded-xl px-4 py-3 focus:outline-none focus:border-[#2c5530] transition-colors">
+                      <option>Black Tea</option>
+                      <option>Green Tea</option>
+                      <option>Masala Chai</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                  <div>
+                    <label class="block mb-2 font-semibold text-[#2c5530]">Price (₹)</label>
+                    <input type="number" class="w-full border-2 border-[#2c5530]/20 rounded-xl px-4 py-3 focus:outline-none focus:border-[#2c5530] transition-colors" placeholder="Enter price">
+                  </div>
+                  <div>
+                    <label class="block mb-2 font-semibold text-[#2c5530]">Stock Quantity</label>
+                    <input type="number" class="w-full border-2 border-[#2c5530]/20 rounded-xl px-4 py-3 focus:outline-none focus:border-[#2c5530] transition-colors" placeholder="Enter quantity">
+                  </div>
+                </div>
+                <div>
+                  <label class="block mb-2 font-semibold text-[#2c5530]">Product Image</label>
+                  <input type="file" class="w-full border-2 border-[#2c5530]/20 rounded-xl px-4 py-3 focus:outline-none focus:border-[#2c5530] transition-colors">
+                </div>
+                <div>
+                  <label class="block mb-2 font-semibold text-[#2c5530]">Description</label>
+                  <textarea class="w-full border-2 border-[#2c5530]/20 rounded-xl px-4 py-3 focus:outline-none focus:border-[#2c5530] transition-colors" rows="4" placeholder="Enter product description"></textarea>
+                </div>
+                <button type="submit" class="w-full px-6 py-4 bg-gradient-to-r from-[#2c5530] to-[#436946] text-white rounded-xl hover:from-[#436946] hover:to-[#2c5530] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-lg font-semibold">
+                  Add Product
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      `,
+      orders: `
+        <div class='bg-white rounded-2xl shadow-xl p-8 text-[#2c5530]'>
+          <div class="flex justify-between items-center mb-10">
+            <h2 class='text-3xl font-bold font-heritage'>View/Edit Orders</h2>
+            <button onclick="showAddOrder()" class='px-6 py-3 bg-gradient-to-r from-[#2c5530] to-[#436946] text-white rounded-full hover:from-[#436946] hover:to-[#2c5530] transition-all duration-300 flex items-center shadow-lg hover:shadow-xl transform hover:scale-105'>
+              <span class="material-icons mr-2">add</span> Add Order
+            </button>
+          </div>
+          
+          <!-- Orders Table -->
+          <div class="overflow-x-auto bg-gradient-to-br from-[#f8f7f3] to-white rounded-xl p-8 shadow-inner">
+            <table class='w-full text-left'>
+              <thead>
+                <tr class='border-b-2 border-[#2c5530]/20'>
+                  <th class='py-4 px-6 font-heritage text-lg'>Order ID</th>
+                  <th class='py-4 px-6 font-heritage text-lg'>Customer</th>
+                  <th class='py-4 px-6 font-heritage text-lg'>Products</th>
+                  <th class='py-4 px-6 font-heritage text-lg'>Total</th>
+                  <th class='py-4 px-6 font-heritage text-lg'>Status</th>
+                  <th class='py-4 px-6 font-heritage text-lg'>Actions</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-[#2c5530]/10">
+                <tr class="hover:bg-[#f8f7f3] transition-colors duration-200">
+                  <td class='py-5 px-6 font-medium text-lg'>#1001</td>
+                  <td class='py-5 px-6'>John Doe</td>
+                  <td class='py-5 px-6'>Premium Assam Black Tea (2)</td>
+                  <td class='py-5 px-6 font-medium'>₹900</td>
+                  <td class='py-5 px-6'>
+                    <span class="px-4 py-1.5 bg-gradient-to-r from-[#9CAF88] to-[#B8C5A6] text-[#2c5530] rounded-full text-sm font-medium shadow-sm">Pending</span>
+                  </td>
+                  <td class='py-5 px-6 space-x-3'>
+                    <button class='px-5 py-2.5 bg-gradient-to-r from-[#9CAF88] to-[#B8C5A6] text-[#2c5530] rounded-full hover:from-[#B8C5A6] hover:to-[#9CAF88] transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105'>Edit</button>
+                    <button class='px-5 py-2.5 bg-gradient-to-r from-red-100 to-red-200 text-red-800 rounded-full hover:from-red-200 hover:to-red-100 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105'>Delete</button>
+                  </td>
+                </tr>
+                <tr class="hover:bg-[#f8f7f3] transition-colors duration-200">
+                  <td class='py-5 px-6 font-medium text-lg'>#1002</td>
+                  <td class='py-5 px-6'>Jane Smith</td>
+                  <td class='py-5 px-6'>Assam Green Tea (3)</td>
+                  <td class='py-5 px-6 font-medium'>₹1,500</td>
+                  <td class='py-5 px-6'>
+                    <span class="px-4 py-1.5 bg-gradient-to-r from-[#B8C5A6] to-[#D1DBCA] text-[#2c5530] rounded-full text-sm font-medium shadow-sm">Shipped</span>
+                  </td>
+                  <td class='py-5 px-6 space-x-3'>
+                    <button class='px-5 py-2.5 bg-gradient-to-r from-[#9CAF88] to-[#B8C5A6] text-[#2c5530] rounded-full hover:from-[#B8C5A6] hover:to-[#9CAF88] transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105'>Edit</button>
+                    <button class='px-5 py-2.5 bg-gradient-to-r from-red-100 to-red-200 text-red-800 rounded-full hover:from-red-200 hover:to-red-100 transition-all duration-300 shadow-md hover:shadow-lg transform hover:scale-105'>Delete</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Add Order Form (Hidden by default) -->
+          <div id="addOrderForm" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center">
+            <div class="bg-white p-10 rounded-2xl max-w-xl w-full mx-4 shadow-2xl">
+              <div class="flex justify-between items-center mb-8">
+                <h3 class="text-2xl font-bold font-heritage text-[#2c5530]">Add New Order</h3>
+                <button onclick="hideAddOrder()" class="text-[#2c5530] hover:text-[#436946] transition-colors">
+                  <span class="material-icons text-2xl">close</span>
+                </button>
+              </div>
+              <form class="space-y-6">
+                <div class="grid grid-cols-2 gap-6">
+                  <div>
+                    <label class="block mb-2 font-semibold text-[#2c5530]">Customer Name</label>
+                    <input type="text" class="w-full border-2 border-[#2c5530]/20 rounded-xl px-4 py-3 focus:outline-none focus:border-[#2c5530] transition-colors" placeholder="Enter customer name">
+                  </div>
+                  <div>
+                    <label class="block mb-2 font-semibold text-[#2c5530]">Product</label>
+                    <select class="w-full border-2 border-[#2c5530]/20 rounded-xl px-4 py-3 focus:outline-none focus:border-[#2c5530] transition-colors">
+                      <option>Premium Assam Black Tea</option>
+                      <option>Assam Green Tea</option>
+                      <option>Masala Chai</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-6">
+                  <div>
+                    <label class="block mb-2 font-semibold text-[#2c5530]">Quantity</label>
+                    <input type="number" class="w-full border-2 border-[#2c5530]/20 rounded-xl px-4 py-3 focus:outline-none focus:border-[#2c5530] transition-colors" placeholder="Enter quantity">
+                  </div>
+                  <div>
+                    <label class="block mb-2 font-semibold text-[#2c5530]">Status</label>
+                    <select class="w-full border-2 border-[#2c5530]/20 rounded-xl px-4 py-3 focus:outline-none focus:border-[#2c5530] transition-colors">
+                      <option>Pending</option>
+                      <option>Processing</option>
+                      <option>Shipped</option>
+                      <option>Delivered</option>
+                    </select>
+                  </div>
+                </div>
+                <button type="submit" class="w-full px-6 py-4 bg-gradient-to-r from-[#2c5530] to-[#436946] text-white rounded-xl hover:from-[#436946] hover:to-[#2c5530] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 text-lg font-semibold">
+                  Add Order
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      `,
+      quotes: `
+        <div class='bg-white rounded-xl shadow p-8 text-[#2c5530]'>
+          <h2 class='text-2xl font-bold mb-4 font-heritage'>Handle Quote Requests</h2>
+          <ul class='divide-y'>
+            <li class='py-3'>
+              <div class='flex justify-between items-center'>
+                <span>Quote #Q123 from Alice</span>
+                <button class='px-4 py-1 bg-[#9CAF88] text-[#2c5530] rounded hover:bg-[#B8C5A6]'>View</button>
+              </div>
+            </li>
+            <li class='py-3'>
+              <div class='flex justify-between items-center'>
+                <span>Quote #Q124 from Bob</span>
+                <button class='px-4 py-1 bg-[#9CAF88] text-[#2c5530] rounded hover:bg-[#B8C5A6]'>View</button>
+              </div>
+            </li>
+          </ul>
+        </div>
+      `,
+      analytics: `
+        <div class='bg-white rounded-xl shadow p-8 text-[#2c5530]'>
+          <h2 class='text-2xl font-bold mb-4 font-heritage'>Analytics Dashboard</h2>
+          <div class='grid grid-cols-1 md:grid-cols-2 gap-8'>
+            <div class='bg-[#f8f7f3] rounded-lg p-6 text-center'>
+              <div class='text-4xl font-bold mb-2'>120</div>
+              <div class='text-lg'>Orders This Month</div>
+            </div>
+            <div class='bg-[#f8f7f3] rounded-lg p-6 text-center'>
+              <div class='text-4xl font-bold mb-2'>8</div>
+              <div class='text-lg'>Pending Quotes</div>
+            </div>
+            <div class='bg-[#f8f7f3] rounded-lg p-6 text-center'>
+              <div class='text-4xl font-bold mb-2'>₹1,20,000</div>
+              <div class='text-lg'>Revenue</div>
+            </div>
+            <div class='bg-[#f8f7f3] rounded-lg p-6 text-center'>
+              <div class='text-4xl font-bold mb-2'>4.8/5</div>
+              <div class='text-lg'>Customer Rating</div>
+            </div>
+          </div>
+        </div>
+      `
+    };
+    // Sidebar navigation logic
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+        const section = this.getAttribute('data-section');
+        document.getElementById('dashboard-content').innerHTML = sections[section] || '';
+      });
+    });
+
+    // Add these functions at the end of your existing script
+    function showAddProduct() {
+      document.getElementById('addProductForm').classList.remove('hidden');
+    }
+
+    function hideAddProduct() {
+      document.getElementById('addProductForm').classList.add('hidden');
+    }
+
+    function showAddOrder() {
+      document.getElementById('addOrderForm').classList.remove('hidden');
+    }
+
+    function hideAddOrder() {
+      document.getElementById('addOrderForm').classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
