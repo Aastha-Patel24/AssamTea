@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title> Shop Page </title>
+
+	<!--CSS Link-->
+	<link rel="stylesheet" type="text/css" href="ShopStyle.css">
+	<!--CSS Link-->
+
+	<!--Font Awesome CDN-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!--Font Awesome CDN-->
+
+	<!--BOOTSTRAP-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+ 
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+	<!--BOOTSTRAP-->
+
+	<!--Google Fonts-->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Chakra+Petch:wght@300&family=Kanit:wght@100&family=Lumanosimo&family=Tektur&family=Ysabeau+SC:wght@200&display=swap" rel="stylesheet">
+	<link rel="preconnect" href="https://fonts.googleapis.com"> 
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Advent+Pro:wght@100&family=Chakra+Petch:wght@300&family=Kanit:wght@100&family=Michroma&family=Ysabeau+SC:wght@200&display=swap" rel="stylesheet">
+	<!--Google Fonts-->
+
+	<!--Jquery CDN-->
+	<script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+	<!--Jquery CDN-->
+
+	<!--Remix Icon CDN-->
+	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+	<!--Remix Icon CDN-->
+
+	<!--WayPoint Js CDN-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js" integrity="sha512-CEiA+78TpP9KAIPzqBvxUv8hy41jyI3f2uHi7DGp/Y/Ka973qgSdybNegWFciqh6GrN2UePx2KkflnQUbUhNIA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<!--WayPoint Js CDN-->
+
+	<!--Counter Js CDN-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js" integrity="sha512-d8F1J2kyiRowBB/8/pAWsqUl0wSEOkG5KATkVV4slfblq9VRQ6MyDZVxWl2tWd+mPhuCbpTB4M7uU/x9FlgQ9Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<!--Counter Js CDN-->
+
+	<!--Animated CSS-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js" integrity="sha512-Eak/29OTpb36LLo2r47IpVzPBLXnAMPAVypbSZiZ4Qkf8p/7S/XRG5xp7OKWPPYfJT6metI+IORkR5G8F900+g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+	<!--Animated CSS-->
+
+</head>
+<body>
+	<header>
+		<div class="logo">
+			<a href="#"> AssamTea </a>
+		</div>
+		<div class="searchbar">
+			<input type="text" placeholder="Search for tea products">
+			<i class="ri-search-2-line"></i>
+		</div>
+		<div class="links">
+			<a href="#">Black Tea</a>
+			<a href="#">Green Tea</a>
+			<a href="#">Herbal Tea</a>
+			<button id="links-btn">Buy Now</button>
+		</div>
+	</header>
+  <div class="main-section">
+        <div class="sec-1">
+          <!-- Toggle Button -->
+            <button class="filter-toggle" id="toggleFilters">Hide Filters</button>
+          
+            <!-- Filter Aside Panel -->
+            <aside id="filterPanel">
+              <h5>Filter by type</h5>
+          
+              <div class="filter-group">
+                <strong>Availability</strong>
+                <label><input type="checkbox"> Add to cart</label>
+                <label><input type="checkbox"> Limited stock</label>
+                <label><input type="checkbox"> Fresh arrivals</label>
+              </div>
+          
+              <div class="filter-group">
+                <strong>Packaging type</strong>
+                <label><input type="checkbox"> Loose leaf</label>
+                <label><input type="checkbox"> Tea bags</label>
+                <label><input type="checkbox"> Gift set</label>
+              </div>
+          
+              <div class="filter-group">
+                <strong>Tea collection</strong>
+                <select>
+                  <option>Select</option>
+                  <option>Winter Special</option>
+                  <option>Summer Sips</option>
+                  <option>Luxury Picks</option>
+                </select>
+              </div>
+          
+              <div class="filter-group">
+                <strong>Tea set</strong>
+                <select>
+                  <option>Select</option>
+                  <option>Porcelain</option>
+                  <option>Clay</option>
+                  <option>Glass</option>
+                </select>
+              </div>
+          
+              <div class="filter-group">
+                <strong>Payment method</strong>
+                <select>
+                  <option>Select</option>
+                  <option>Credit Card</option>
+                  <option>PayPal</option>
+                  <option>Cash on Delivery</option>
+                </select>
+              </div> 
+            </aside>
+        </div>
+        <div class="sec-2">
+          <div class="text">
+            <h1 id="text-h1"> Result for "Assam Tea" </h1>
+            <p id="text-p"> 120 varieties </p>
+          </div>
+          <div class="product">
+            <div class="pro">
+              <div class="stock">
+                <h1 id="stock-h1">Out Of Stock</h1>
+                <p id="stock-p">@TeaLover88</p>
+              </div>
+              <div class="img">
+                <img src="img/i1.png">
+              </div>
+              <div class="pro-detail">
+                <div class="pro-price">
+                  <p>Current Price</p>
+                  <p>Time Left</p>
+                </div>
+                <div class="pro-price-2">
+                  <h5>10.0</h5>
+                  <h5 style="padding-left: 20%;">1 day 5 hours</h5>
+                </div>
+              </div>
+            </div>
+            <div class="pro">
+              <div class="stock">
+                <h1 id="stock-h1">Tea plantation</h1>
+                <p id="stock-p">@TeaTime22</p>
+              </div>
+              <div class="img">
+                <img src="img/i2.png">
+              </div>
+              <div class="pro-detail">
+                <div class="pro-price">
+                  <p>Current Price</p>
+                  <p>Time Left</p>
+                </div>
+                <div class="pro-price-2">
+                  <h5>8.0</h5>
+                  <h5 style="padding-left: 20%;">2 day 10 hours</h5>
+                </div>
+              </div>
+            </div>
+            <div class="pro">
+              <div class="stock">
+                <h1 id="stock-h1">Tea Ceremony</h1>
+                <p id="stock-p">@TeaAddict77</p>
+              </div>
+              <div class="img">
+                <img src="img/i3.png">
+              </div>
+              <div class="pro-detail">
+                <div class="pro-price">
+                  <p>Current Price</p>
+                  <p>Time Left</p>
+                </div>
+                <div class="pro-price-2">
+                  <h5>12.0</h5>
+                  <h5 style="padding-left: 20%;">3 hours 30 minutes</h5>
+                </div>
+              </div>
+            </div>
+            <div class="pro">
+              <div class="stock">
+                <h1 id="stock-h1">Relexing Time</h1>
+                <p id="stock-p">@TeaMaster</p>
+              </div>
+              <div class="img">
+                <img src="img/i4.png">
+              </div>
+              <div class="pro-detail">
+                <div class="pro-price">
+                  <p>Current Price</p>
+                  <p>Freshly brewood tea</p>
+                </div>
+                <div class="pro-price-2">
+                  <h5>15.0</h5>
+                  <h5 style="padding-left: 20%;">Assam's finest</h5>
+                </div>
+              </div>
+            </div>
+            <div class="pro">
+              <div class="stock">
+                <h1 id="stock-h1">Black Tea</h1>
+                <p id="stock-p">@TeaGuru</p>
+              </div>
+              <div class="img">
+                <img src="img/i5.png">
+              </div>
+              <div class="pro-detail">
+                <div class="pro-price">
+                  <p>Special tea offer</p>
+                  <p>Limited</p>
+                </div>
+                <div class="pro-price-2">
+                  <h5>2.5 kg</h5>
+                  <h5 style="padding-left: 20%;">10:00:00</h5>
+                </div>
+              </div>
+            </div>
+            <div class="pro">
+              <div class="stock">
+                <h1 id="stock-h1">Green Tea</h1>
+                <p id="stock-p">@TeaLover123</p>
+              </div>
+              <div class="img">
+                <img src="img/i6.png">
+              </div>
+              <div class="pro-detail">
+                <div class="pro-price">
+                  <p>Discounted</p>
+                  <p>Hurry, buy now</p>
+                </div>
+                <div class="pro-price-2">
+                  <h5>2.0</h5>
+                  <h5 style="padding-left: 20%;">09:30:00</h5>
+                </div>
+              </div>
+            </div>
+            <div class="pro">
+              <div class="stock">
+                <h1 id="stock-h1">Tea Testing</h1>
+                <p id="stock-p">@AssamTeaHub</p>
+              </div>
+              <div class="img">
+                <img src="img/i7.png">
+              </div>
+              <div class="pro-detail">
+                <div class="pro-price">
+                  <p>Best selling tea</p>
+                  <p>Limeted time offer</p>
+                </div>
+                <div class="pro-price-2">
+                  <h5>3.0</h5>
+                  <h5 style="padding-left: 20%;">08:45:00</h5>
+                </div>
+              </div>
+            </div>
+            <div class="pro">
+              <div class="stock">
+                <h1 id="stock-h1">Earl Grey</h1>
+                <p id="stock-p">@TeaDonnatsse</p>
+              </div>
+              <div class="img">
+                <img src="img/i8.png">
+              </div>
+              <div class="pro-detail">
+                <div class="pro-price">
+                  <p>popular choice</p>
+                  <p>Last chance to buy</p>
+                </div>
+                <div class="pro-price-2">
+                  <h5>4.0</h5>
+                  <h5 style="padding-left: 20%;">07:15:00</h5>
+                </div>
+              </div>
+            </div>
+            <div class="pro">
+              <div class="stock">
+                <h1 id="stock-h1">Tea Packaging</h1>
+                <p id="stock-p">@AssamTeaDesi</p>
+              </div>
+              <div class="img">
+                <img src="img/i9.png">
+              </div>
+              <div class="pro-detail">
+                <div class="pro-price">
+                  <p>Aristic</p>
+                  <p>Exclusive design</p>
+                </div>
+                <div class="pro-price-2">
+                  <h5>5.0</h5>
+                  <h5 style="padding-left: 20%;">06:30:00</h5>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button id="sec-2-btn"> Filter Results </button>
+        </div>
+  </div>
+    <footer>
+    <div class="foot-logo">
+      <a href="#" id="foot-logo-a"> AssamTea </a>
+    </div>
+    <div class="foot-links">
+      <a href="#"> Home </a>
+      <a href="#"> About Us </a>
+      <a href="#"> Contact Us </a>
+    </div>
+  </footer>
+  
+
+</body>
+</html>
+<!-- JavaScript for Toggle -->
+  <script type="text/javascript">
+    const toggleBtn = document.getElementById('toggleFilters');
+    const filterPanel = document.getElementById('filterPanel');
+
+    toggleBtn.addEventListener('click', () => {
+      if (filterPanel.style.display === 'none') {
+        filterPanel.style.display = 'block';
+        toggleBtn.textContent = 'Hide Filters';
+      } else {
+        filterPanel.style.display = 'none';
+        toggleBtn.textContent = 'Show Filters';
+      }
+    });
+  </script>
