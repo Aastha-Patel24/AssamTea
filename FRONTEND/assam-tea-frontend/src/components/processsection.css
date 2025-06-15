@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans&display=swap');
+
+/* Wrapper and background */
+.process-wrapper {
+  padding: 60px 0;
+  background-color: #fdf6f0;
+  font-family: 'Open Sans', sans-serif;
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* Title section */
+.process-title {
+  font-family: 'Merriweather', serif;
+  font-size: 48px;
+  font-weight: bold;
+  color: #5C4033;
+  text-align: center;
+  margin: 40px 0;
+}
+
+/* Decorative line */
+.black-line {
+  width: 60px;
+  height: 4px;
+  background-color: #5C4033;
+  margin: 0 auto;
+}
+
+/* Container holding all process steps */
+.process-container {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 0 20px;
+}
+
+/* Each step row */
+.process-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transition: transform 0.4s ease;
+}
+
+/* Hover effect */
+.process-row:hover {
+  transform: scale(1.03);
+}
+
+/* For alternating rows (image left, text right and vice versa) */
+.process-row.reverse {
+  flex-direction: row-reverse;
+}
+
+/* Text container */
+.process-text {
+  flex: 1;
+  text-align: justify;
+}
+
+/* Headings inside process text */
+.process-text h3 {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 50px;
+  color: #5C4033;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+/* Paragraph inside process text */
+.process-text p {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 25px;
+  line-height: 1.8;
+  color: #333;
+}
+
+/* Images */
+.process-row img {
+  flex: 1;
+  max-width: 500px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .process-row {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .process-row.reverse {
+    flex-direction: column;
+  }
+
+  .process-row img {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .process-text h3 {
+    font-size: 30px;
+  }
+
+  .process-text p {
+    font-size: 18px;
+  }
+}
+
+/* Button styling */
+.button-wrapper {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.explore-button {
+  background-color: #edc9af;   /* Desert Sand */
+  color: #5C4033;              /* Liver */
+  border: none;
+  padding: 15px 40px;
+  font-size: 20px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.explore-button:hover,
+.explore-button:active {
+  background-color: #5C4033;   /* Liver */
+  color: #edc9af;              /* Desert Sand */
+}

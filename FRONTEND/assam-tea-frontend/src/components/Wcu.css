@@ -1,0 +1,85 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Open+Sans&display=swap');
+
+.main-WCU {
+  padding: 60px 0;
+  background-color: #fdf6f0;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.WCU-heading {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.WCU-heading h1 {
+  font-family: 'Merriweather', serif;
+  color: #5C4033;
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.WCU-content {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  padding: 0 20px;
+}
+
+.WCU-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  transition: transform 0.4s ease;
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.WCU-card:hover {
+  transform: scale(1.03);
+}
+
+.WCU-crd-1, .WCU-crd-2 {
+  flex: 1;
+  text-align: center;
+}
+
+.WCU-img img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.WCU-crd-2 h1,
+.WCU-crd-1 h1 {
+  font-size: 50px;
+  color: #5C4033;
+  font-weight: 700;
+  margin-bottom: 16px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.WCU-crd-2 p,
+.WCU-crd-1 p {
+  font-size: 25px;
+  line-height: 1.8;
+  color: #333;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .WCU-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .WCU-img img {
+    max-width: 300px;
+  }
+}

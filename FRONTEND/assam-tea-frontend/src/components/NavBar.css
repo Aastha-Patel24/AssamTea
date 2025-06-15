@@ -1,0 +1,151 @@
+:root {
+  --color-liver: #5C4033;
+  --color-desert-sand: #edc9af;
+  --color-peach-yellow: #fadfad;
+  --color-isabelline: #f4f0ec;
+  --color-sage: #b2ac88;
+}
+
+.navbar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: #FBF5EF !important;
+  padding: 1rem 2rem;
+}
+
+.navbar-brand {
+  font-family: 'Georgia', serif;
+  font-size: 1.8rem;
+  color: #4caf50 !important;
+}
+
+.navbar-nav {
+  margin-left: auto;
+}
+
+.nav-link {
+  color: var(--color-liver) !important;
+  margin-right: 1rem;
+  font-weight: 900;
+  font-size: 18px;
+  font-family: "Merriweather", serif;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.nav-link::before {
+  content: "";
+  position: absolute;
+  top: 104%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  border-radius: 100px;
+  background-color: var(--color-liver);
+  transition: transform 0.3s ease;
+  transform: scaleX(0);
+  z-index: -1;
+  transform-origin: right;
+}
+
+.nav-link:hover::before {
+  transform: scaleX(1);
+  height: 2px;
+  transform-origin: left;
+}
+
+/* Container for buttons on navbar right */
+.navbar-buttons {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+/* Order Now button */
+.btn-warning {
+  min-width: 120px;
+  padding: 8px 18px;
+  height: 40px;
+  font-size: 15px;
+  font-family: "Merriweather", serif;
+  font-weight: 700;
+  background-color: var(--color-desert-sand) !important;
+  color: var(--color-liver) !important;
+  border: none;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.btn-warning:hover,
+.btn-warning:focus,
+.btn-warning:active {
+  background-color: var(--color-liver) !important;
+  color: var(--color-desert-sand) !important;
+  outline: none;
+}
+
+/* Account Button (btn-warning dropdown-toggle) */
+.btn-warning.dropdown-toggle {
+  background-color: var(--color-desert-sand);
+  color: var(--color-liver);
+  border-radius: 12px;
+  font-family: "Merriweather", serif;
+  font-weight: 700;
+  padding: 8px 16px;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.btn-warning.dropdown-toggle:hover,
+.btn-warning.dropdown-toggle:focus {
+  background-color: var(--color-liver);
+  color: var(--color-desert-sand);
+  outline: none;
+}
+
+/* Dropdown menu styling */
+.dropdown-menu {
+  background-color: #FBF5EF; /* light background consistent with site */
+  border-radius: 12px;
+  padding: 0.5rem 0;
+  min-width: 140px;
+  box-shadow: 0 4px 12px rgba(92, 64, 51, 0.2);
+}
+
+/* Dropdown items (Login, Signup links) */
+.dropdown-item {
+  font-family: "Merriweather", serif;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color-liver);
+  padding: 10px 20px;
+  border-radius: 10px;
+  margin: 0.2rem 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+  background-color: var(--color-liver);
+  color: var(--color-desert-sand);
+  text-decoration: none;
+  outline: none;
+}
+
+/* Optional: Navbar toggler icon color */
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%235C4033' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}

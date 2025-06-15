@@ -1,0 +1,185 @@
+/* ===== ProductDetail.css ===== */
+
+/* Full-screen layout container */
+.product-detail-page {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 60px;
+  padding: 40px 10vw;
+  background-color: #FBF5EF;
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* ===== Product Image Section ===== */
+.product-image-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+}
+
+.main-product-image {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  object-fit: cover;
+}
+
+.size-options-images {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.size-options-images img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border: 2px solid #ddd;
+}
+
+/* ===== Product Info Section ===== */
+.product-info-section {
+  flex: 1.2;
+  padding: 20px;
+  font-family: 'Open Sans', sans-serif;
+  color: #3a2e2e;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.product-info-section h1 {
+  font-family: 'Merriweather', serif;
+  font-size: 38px;
+  color: #3a2e2e;
+  margin-bottom: 12px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #f7c948;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.rating .star {
+  color: #ffc107;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 14px;
+}
+
+.description {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 24px;
+  color: #5b5b5b;
+}
+
+.product-info-section h3 {
+  margin-top: 28px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #3a2e2e;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 6px;
+}
+
+.sizes {
+  list-style-type: none;
+  padding: 0;
+  margin: 12px 0 20px;
+}
+
+.sizes li {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #4a4a4a;
+  display: flex;
+  justify-content: space-between;
+  max-width: 240px;
+}
+
+.additional-info,
+.temperature {
+  margin-bottom: 20px;
+  font-size: 16px;
+  color: #4a4a4a;
+  line-height: 1.6;
+}
+
+/* Buttons Section */
+.action-buttons {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.add-to-cart {
+  background-color: #edc9af;
+  color: #5C4033;
+  padding: 12px 32px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  width: fit-content;
+}
+
+.add-to-cart:hover {
+  background-color: #5C4033;
+  color: #edc9af;
+}
+
+.bulk-order {
+  background-color: #9caf88;
+  color: #3a2e2e;
+  padding: 12px 32px;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  width: fit-content;
+}
+
+.bulk-order:hover {
+  background-color: #5C4033;
+  color: #edc9af;
+}
+
+.product-info-section p svg {
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+/* ===== Root & Page Height Fix ===== */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #FBF5EF;
+}

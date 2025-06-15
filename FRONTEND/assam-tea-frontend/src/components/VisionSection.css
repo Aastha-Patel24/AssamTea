@@ -1,0 +1,53 @@
+/* Space between Mission section and black line */
+.vision-divider {
+  border-top: 4px solid ;
+  margin-top: 100px;
+}
+
+/* Full Vision section wrapper */
+.vision-wrapper {
+  width: 100%;
+  background-color: #f9f9f9;
+  padding-bottom: 40px;
+}
+
+/* Heading Section */
+.vision-header-section {
+  background-color: #FBF5EF;
+  padding: 40px 0;
+  text-align: center;
+}
+
+.vision-title {
+  font-family: 'Georgia', serif;
+  font-weight: 800;
+  font-size: 2.8rem;
+  color: #3b1f1f;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+/* Green bordered wrapper only for text */
+.vision-text-wrapper {
+  background-color: #d0e1c0;
+  /* border-top: 3px solid black;
+  border-bottom: 3px solid black; */
+  padding: 60px 20px;
+}
+
+/* Centered content container */
+.vision-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Main vision text */
+.vision-text {
+  font-size: 1.6rem;
+  line-height: 1.8;
+  color: #3e3e3e;
+  font-family: 'Segoe UI', sans-serif;
+  max-width: 90%;
+  margin: 0 auto;
+}
