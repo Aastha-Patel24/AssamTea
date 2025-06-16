@@ -1,0 +1,90 @@
+.shopping-cart-container {
+  padding: 6rem 2rem 2rem; /* Top padding increased to appear below navbar */
+  background-color: #FBF5EF;
+}
+
+.shopping-cart-title {
+  text-align: left;
+  margin-left: 0;
+  margin-bottom: 1.5rem;
+  color: #5C4033;
+  font-weight: bold;
+  font-size: 2rem;
+  margin-top : 20px;
+}
+
+.cart-content {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.product-list {
+  flex: 2;
+  background-color: #FFFFFF;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.05);
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+.continue-shopping {
+  display: inline-block;
+  margin-top: 2rem;
+  font-weight: 600;
+  color: #5C4033;
+  text-decoration: none;
+  border: 2px solid #5C4033;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.continue-shopping:hover {
+  background-color: #5C4033;
+  color: #fff;
+}
+
+
+/* Font size enhancements */
+.product-row {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.product-row h3 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.product-row .weight,
+.product-row .description,
+.product-row .benefits,
+.product-row .stock {
+  font-size: 1.1rem;
+  margin: 0.2rem 0;
+}
+
+/* Responsive scaling */
+@media (max-width: 768px) {
+  .cart-content {
+    flex-direction: column;
+  }
+
+  .product-row {
+    font-size: 1rem;
+  }
+
+  .product-row h3 {
+    font-size: 1.3rem;
+  }
+}
