@@ -1,4 +1,5 @@
 /* src/pages/AdminDashboard.css */
+
 .admin-welcome {
   text-align: center;
   font-size: 1.2rem;
@@ -6,6 +7,7 @@
   margin-bottom: 20px;
   font-family: 'Merriweather', serif;
 }
+
 
 .admin-dashboard {
   padding: 40px 10vw;
@@ -61,4 +63,7 @@
 .card-desc {
   font-size: 1rem;
   font-family: 'Open Sans', sans-serif;
+
 }
+
+

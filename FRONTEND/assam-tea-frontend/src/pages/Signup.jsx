@@ -12,6 +12,9 @@ const Signup = () => {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [pincode, setPincode] = useState("");
+
+  const [role, setRole] = useState("customer"); // default role
+
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
@@ -43,8 +46,9 @@ const Signup = () => {
     if (!validateForm()) return;
 
     try {
-      const res = await axios.post(`${USER_API_END_POINT}/register`,{
-         fullname: fullName,
+
+      const res = await axios.post(`${USER_API_END_POINT}/register`, {
+        fullname: fullName,
         email,
         password,
         contactNo,
@@ -53,6 +57,7 @@ const Signup = () => {
         state,
         pincode,
         confirmPassword,
+        role,
       });
 
       if (res.status === 201) {
@@ -67,14 +72,14 @@ const Signup = () => {
         setPassword("");
         setConfirmPassword("");
         setErrors({});
+        setRole("");
       } else {
         alert("Something went wrong!");
       }
     } catch (err) {
       alert(err.response?.data?.message || "Registration failed");
     }
-    
-  
+
   };
 
   return (
@@ -153,6 +158,13 @@ const Signup = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
           {errors.email && <p className="error-text">{errors.email}</p>}
+
+          <label style={{marginRight:"5px"}}>Role</label>
+          <select style={{display:"flex"}} value={role} onChange={(e) => setRole(e.target.value)}>
+            <option value="customer">Customer</option>
+            <option value="admin">Admin</option>
+          </select>
+          {errors.role && <p className="error-text">{errors.role}</p>}
 
           <label>Password</label>
           <input

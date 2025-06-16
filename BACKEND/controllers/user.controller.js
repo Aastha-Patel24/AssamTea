@@ -24,7 +24,7 @@ const isValidPassword = (password) => {
 
 // Signup
 export const register = async (req, res) => {
-    const { fullname, contactNo, address,city,state,pincode, email, password, role , confirmPassword} = req.body
+    const { fullname, contactNo, address, city, state, pincode, email, password, role, confirmPassword } = req.body
 
     try {
 
@@ -32,7 +32,7 @@ export const register = async (req, res) => {
             return res.status(400).json({ message: "Invalid email format" });
         }
 
-         if (password !== confirmPassword) {
+        if (password !== confirmPassword) {
             return res.status(400).json({ message: "Passwords do not match" });
         }
 
@@ -73,11 +73,12 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
     // console.log("REQ BODY = ", req.body);
 
-    const { email, password } = req.body;
+    const { email, password, role } = req.body;
 
     try {
 
-        if (!email || !password ) {
+        if (!email || !password || !role) {
+
             return res.status(400).json({
                 message: "Something is missing",
                 success: false
@@ -88,20 +89,17 @@ export const login = async (req, res) => {
 
         if (!user) return res.status(404).json({ message: 'User not found' });
 
-        // if (role !== user.role) {
-        //     return res.status(403).json({ message: `Unauthorized: User is not a ${role}` });
-        // }
+
+        if (role !== user.role) {
+            return res.status(403).json({ message: `Unauthorized: User is not a ${role}` });
+        }
+
 
         const isMatch = await bcrypt.compare(password, user.password);
 
         if (!isMatch) return res.status(400).json({ message: 'Invalid credentials' });
 
-        // const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, {
-        //     expiresIn: '1d'
-        // });
-
-        
-        const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+        const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, {
             expiresIn: '1d'
         });
 
@@ -111,14 +109,13 @@ export const login = async (req, res) => {
             sameSite: 'None',
             maxAge: 1 * 24 * 60 * 60 * 1000
 
-        })
-            .status(200).json({
+        }).status(200).json({
                 message: "Login successful",
                 user: {
                     id: user._id,
                     fullname: user.fullname,
                     email: user.email,
-                    // role: user.role
+                    role: user.role
                 }
             });
 
@@ -179,41 +176,6 @@ export const frogotPassword = async (req, res) => {
     }
 }
 
-// Reset Password
-
-// export const resetPassword = async (req, res) => {
-//     const { token } = req.params;
-//     const { newPassword } = req.body;
-
-//     try {
-//         if (!isValidPassword(newPassword)) {
-//             return res.status(400).json({
-//                 message: "Password must include 1 uppercase, 1 lowercase, 1 special character and be at least 6 characters'"
-//             });
-//         }
-
-//         const user = await User.findOne({
-//             resetToken: token,
-//             resetTokenExpiration: { $gt: Date.now() }
-//         });
-
-//         if (!user) {
-//             return res.status(400).json({ message: 'Token is invalid or has expired' });
-//         }
-
-//         user.password = await bcrypt.hash(newPassword, 11);
-//         user.resetToken = undefined;
-//         user.resetTokenExpiration = undefined;
-
-//         await user.save();
-
-//         return res.status(200).json({
-//             message: 'Password reset successful'
-//         });
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
 
 export const resetPassword = async (req, res) => {
     const { token } = req.params;

@@ -1,15 +1,22 @@
+
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
 import { OrderProvider } from './context/OrderContext';
-import { AuthProvider } from './context/AuthContext'; // ✅ Import AuthProvider
+import { AuthProvider } from './context/AuthContext'; 
+import './index.css'
+import App from './App.jsx'
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProvider> {/* ✅ Wrap App with AuthProvider first */}
+    <AuthProvider> 
       <OrderProvider>
         <App />
       </OrderProvider>
     </AuthProvider>
   </React.StrictMode>
 );
+
+
+
+

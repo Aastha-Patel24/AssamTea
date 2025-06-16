@@ -1,16 +1,34 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+
+import React, { useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './NavBar.css';
 import logo from '../assets/images/LOGO.png';
 
 const Navbar = () => {
-  const isLoggedIn = localStorage.getItem("isLoggedIn") === "true";
+
+
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    } else {
+      setUser(null);
+    }
+  }, [location]);
+
+
 
   const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
-    window.location.href = "/"; // Reload and redirect to home
+    localStorage.removeItem("user"); // ✅ Clear user info
+    setUser(null);
+    navigate("/login");
   };
+
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark justify-content-center">
@@ -39,6 +57,11 @@ const Navbar = () => {
             <li className="nav-item"><Link className="nav-link" to="/order">Order</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/blog">Blog</Link></li>
             <li className="nav-item"><Link className="nav-link" to="/contact">Contact Us</Link></li>
+            {user?.role === "admin" && (
+              <li className="nav-item">
+                <Link className="nav-link" to="/profile">Admin</Link>
+              </li>
+            )}
           </ul>
 
           {/* Order Now Button */}
@@ -46,45 +69,41 @@ const Navbar = () => {
             ORDER NOW
           </Link>
 
-          {/* Conditional Dropdown for Auth/Profile */}
-          {isLoggedIn ? (
-            <div className="dropdown">
-              <button 
-                className="btn btn-warning dropdown-toggle d-flex align-items-center gap-2" 
-                type="button" 
-                id="profileMenuButton" 
-                data-bs-toggle="dropdown" 
-                aria-expanded="false"
-              >
-                <i className="fas fa-user-circle"></i> Profile
-              </button>
-              <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="profileMenuButton">
-                <li><Link className="dropdown-item" to="/profile">My Profile</Link></li>
-                <li><button className="dropdown-item" onClick={handleLogout}>Logout</button></li>
-              </ul>
-            </div>
-          ) : (
-            <div className="dropdown">
-              <button 
-                className="btn btn-warning dropdown-toggle d-flex align-items-center gap-2" 
-                type="button" 
-                id="userMenuButton" 
-                data-bs-toggle="dropdown" 
-                aria-expanded="false"
-              >
-                <i className="fas fa-user"></i> Account
-              </button>
-              <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="userMenuButton">
-                <li><Link className="dropdown-item" to="/login">Login</Link></li>
-                <li><Link className="dropdown-item" to="/signup">Signup</Link></li>
-                <li><Link className="dropdown-item" to="/adminsignup">Admin Signup</Link></li>
-              </ul>
-            </div>
-          )}
+          {/* Dropdown menu for Login and Signup */}
+          <div className="dropdown">
+            <button
+              className="btn btn-warning dropdown-toggle d-flex align-items-center gap-2"
+              type="button"
+              id="userMenuButton"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <i className="fas fa-user"></i> Account
+            </button>
+            <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="userMenuButton">
+              {/* <li><Link className="dropdown-item" to="/login">Login</Link></li>
+            <li><Link className="dropdown-item" to="/signup">Signup</Link></li> */}
+
+              {!user && (
+                <>
+                  <li><Link className="dropdown-item" to="/login">Login</Link></li>
+                  <li><Link className="dropdown-item" to="/signup">Signup</Link></li>
+                </>
+              )}
+              {user && (
+                <li>
+                  <button onClick={handleLogout} className="dropdown-item">
+                    Logout
+                  </button>
+                </li>
+              )}
+            </ul>
+          </div>
         </div>
       </div>
     </nav>
-  );
+  )
+
 };
 
 export default Navbar;
