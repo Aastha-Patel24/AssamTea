@@ -1,12 +1,14 @@
-// src/pages/AdminDashboard.jsx
-
-import React from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/AuthContext';
 import '../components/AdminDashboard.css';
 import { FaBoxOpen, FaUserTie, FaUserFriends, FaUserEdit, FaChartBar } from 'react-icons/fa';
 
 const AdminDashboard = () => {
   const navigate = useNavigate();
+  const { admin } = useContext(AuthContext); // Get current admin info
+
+  const adminName = admin?.name || "Admin"; // Default fallback
 
   const cards = [
     {
@@ -44,6 +46,8 @@ const AdminDashboard = () => {
   return (
     <div className="admin-dashboard">
       <h1 className="dashboard-title">Admin Dashboard</h1>
+      <p className="admin-welcome">Welcome back, <strong>{adminName}</strong>!</p>
+
       <div className="card-grid">
         {cards.map((card, index) => (
           <div className="dashboard-card" key={index} onClick={() => navigate(card.route)}>
