@@ -58,6 +58,7 @@ body {
 .bulk-form textarea {
   height: var(--input-height);
   border: 2px solid #ccc;
+  color: #5C4033;
   background-color: var(--input-background);
   border-radius: var(--input-border-radius);
   padding-left: var(--input-padding-left);
