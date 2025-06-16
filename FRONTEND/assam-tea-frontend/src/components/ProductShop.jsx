@@ -84,7 +84,7 @@ const ProductShop = () => {
               <h3>{product.name}</h3>
               <p>{product.description}</p>
               <h1>₹ {product.price} Per Kg / Pack</h1>
-              <div className="edit-delete-group">
+              <div className  ="edit-delete-group">
                 <button className="edit-btn" onClick={() => handleEdit(product)}>Edit</button>
                 <button className="delete-btn" onClick={() => handleDelete(product.id)}>Delete</button>
               </div>
