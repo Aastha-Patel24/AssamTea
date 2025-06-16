@@ -1,4 +1,11 @@
 /* src/pages/AdminDashboard.css */
+.admin-welcome {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #5C4033;
+  margin-bottom: 20px;
+  font-family: 'Merriweather', serif;
+}
 
 .admin-dashboard {
   padding: 40px 10vw;
