@@ -1,0 +1,221 @@
+/* ===== BulkOrder.css ===== */
+
+:root {
+  --primary-bg-color: #FBF5EF;
+  --dark-brown: #5C4033;
+  --light-peach: #E6B8A2;
+  --peach-yellow: #EDC9AF;
+
+  --font-kanit: 'Kanit', sans-serif;
+  --font-merriweather: "Merriweather", serif;
+  --font-open-sans: "Open Sans", sans-serif;
+
+  --input-height: 50px;
+  --input-border: 3px solid var(--dark-brown);
+  --input-background: #fff;
+  --input-border-radius: 10px;
+  --input-padding-left: 2%;
+  --input-font-weight: bold;
+
+  --label-font-size: 20px;
+  --label-color: var(--dark-brown);
+  --label-font-weight: bold;
+  --label-padding-left: 1%;
+}
+
+body {
+  background-color: var(--primary-bg-color);
+  font-family: var(--font-open-sans);
+}
+
+.bulk-order-page {
+  padding: 40px 10vw;
+  background-color: var(--primary-bg-color);
+  min-height: 100vh;
+}
+
+.bulk-form {
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.bulk-form label {
+  font-size: var(--label-font-size);
+  color: var(--label-color);
+  font-weight: var(--label-font-weight);
+  padding-left: var(--label-padding-left);
+  font-family: var(--font-merriweather);
+}
+
+.bulk-form input,
+.bulk-form textarea {
+  height: var(--input-height);
+  border: 2px solid #ccc;
+  background-color: var(--input-background);
+  border-radius: var(--input-border-radius);
+  padding-left: var(--input-padding-left);
+  font-weight: var(--input-font-weight);
+  font-family: var(--font-open-sans);
+  transition: border-color 0.3s ease;
+}
+
+.bulk-form textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+.bulk-form input:focus,
+.bulk-form textarea:focus {
+  border: var(--input-border);
+  outline: none;
+}
+
+.bulk-form button {
+  height: 60px;
+  width: 200px;
+  align-self: center;
+  border: 2px solid var(--light-peach);
+  border-radius: 10px;
+  font-size: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--dark-brown);
+  background-color: var(--light-peach);
+  font-weight: bold;
+  font-family: var(--font-merriweather);
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.bulk-form button:hover {
+  background-color: var(--dark-brown);
+  color: #fff;
+  border: 2px solid var(--dark-brown);
+}
+
+.benefits {
+  text-align: center;
+  margin-top: 60px;
+}
+
+.benefits h2 {
+  font-size: 32px;
+  font-family: var(--font-merriweather);
+  color: var(--dark-brown);
+  margin-bottom: 20px;
+}
+
+.benefits ul {
+  list-style: none;
+  padding: 0;
+  font-family: var(--font-open-sans);
+  color: var(--dark-brown);
+  font-size: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cta {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.cta-link {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--dark-brown);
+  border: 2px solid var(--dark-brown);
+  padding: 12px 24px;
+  border-radius: 8px;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.cta-link:hover {
+  background-color: var(--dark-brown);
+  color: #fff;
+}
+/* === Improved Benefits Section with Cards === */
+.benefits-cards {
+  margin-top: 60px;
+  padding: 0 5vw;
+  text-align: center;
+}
+
+.benefits-cards h2 {
+  font-size: 36px;
+  color: var(--dark-brown);
+  font-family: var(--font-merriweather);
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.benefit-card {
+  background-color: #fff;
+  border: 2px solid var(--dark-brown);
+  border-radius: 16px;
+  padding: 30px 24px;
+  width: 280px;
+  font-family: var(--font-open-sans);
+  color: var(--dark-brown);
+  font-size: 18px;
+  font-weight: 600;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.benefit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
+}
+
+/* === Check Our Products Button === */
+.product-btn-container {
+  text-align: center;
+}
+
+.product-button {
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+  background-color: var(--dark-brown); /* liver color */
+  padding: 16px 32px;
+  border: none;
+  border-radius: 12px;
+  font-family: var(--font-merriweather);
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+/* Keep same color on click */
+.product-button:active {
+  transform: scale(0.97);
+}
+.product-button:hover {
+  background-color: var(--dark-brown); /* no color change */
+  color: #fff; /* keep white text */
+  transform: none; /* no movement */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* same as default */
+}
