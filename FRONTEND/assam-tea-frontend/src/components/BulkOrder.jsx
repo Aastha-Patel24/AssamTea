@@ -1,46 +1,72 @@
-// src/pages/BulkOrder.jsx
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import './BulkOrder.css';
-import { Link } from 'react-router-dom';
+import { OrderContext } from '../context/OrderContext';
+import { useNavigate } from 'react-router-dom';
 
 const BulkOrder = () => {
+  const { addOrder } = useContext(OrderContext);
+  const navigate = useNavigate();
+
+  const [formData, setFormData] = useState({
+    name: '',
+    business: '',
+    email: '',
+    phone: '',
+    product: '',
+    quantity: '',
+    location: '',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData(prev => ({
+      ...prev,
+      [e.target.name]: e.target.value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addOrder(formData);
+    navigate('/admin/wholesalers'); // Redirect after submission
+  };
+
   return (
     <div className="bulk-order-page">
-      {/* Enquiry Form */}
       <section className="form-section">
-        <form className="bulk-form">
-          <label htmlFor="name">Your Name</label>
-          <input type="text" placeholder="Your Name" required />
-          <label htmlFor="business">Business Name</label>
-          <input type="text" placeholder="Business Name" />
-          <label htmlFor="email">Email</label>
-          <input type="email" placeholder="Email" required />
-          <label htmlFor="phone">Phone Number</label>
-          <input type="tel" placeholder="Phone Number" required />
-          <label htmlFor="product">Product Interested In</label>
-          <input type="text" placeholder="Product Interested In" required />
-          <label htmlFor="quantity">Quantity Required</label>
-          <input type="text" placeholder="Quantity Required" />
-          <label htmlFor="location">Location</label>
-          <input type="text" placeholder="Location" />
+        <form className="bulk-form" onSubmit={handleSubmit}>
+          {[
+            { label: "Your Name", name: "name" },
+            { label: "Business Name", name: "business" },
+            { label: "Email", name: "email", type: "email" },
+            { label: "Phone Number", name: "phone" },
+            { label: "Product Interested In", name: "product" },
+            { label: "Quantity Required", name: "quantity" },
+            { label: "Location", name: "location" }
+          ].map(({ label, name, type = "text" }) => (
+            <React.Fragment key={name}>
+              <label htmlFor={name}>{label}</label>
+              <input
+                type={type}
+                name={name}
+                placeholder={label}
+                value={formData[name]}
+                onChange={handleChange}
+                required={name === "name" || name === "email" || name === "phone" || name === "product"}
+              />
+            </React.Fragment>
+          ))}
           <label htmlFor="message">Message / Custom Request</label>
-          <textarea placeholder="Message / Custom Request" rows="4"></textarea>
+          <textarea
+            name="message"
+            placeholder="Message / Custom Request"
+            rows="4"
+            value={formData.message}
+            onChange={handleChange}
+          ></textarea>
+
           <button type="submit">Submit</button>
         </form>
-      </section>
-
-      {/* Benefits Section as Cards */}
-      <section className="benefits-cards">
-        <h2>Why Buy in Bulk?</h2>
-        <div className="card-container">
-          <div className="benefit-card">✔ Custom packaging</div>
-          <div className="benefit-card">✔ Volume discounts</div>
-          <div className="benefit-card">✔ Pan-India delivery</div>
-        </div>
-
-        <div className="product-btn-container">
-          <Link to="/product" className="product-button">Check Our Products</Link>
-        </div>
       </section>
     </div>
   );
